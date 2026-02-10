@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,6 +10,8 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 
+import ProfileMenu from "./components/profilemenu";
+import ProPlansPage from "./pages/ProPlansPage";
 import RegisterPage from "./pages/Register";
 import HomePage from "./pages/homepage";
 import WatchHistory from "./pages/watch_history";
@@ -44,7 +47,9 @@ function AppLayout() {
             <Link to="/">Home</Link>
           </li>
 
-          {user === null && <li style={{ color: "white" }}>Checking session...</li>}
+          {user === null && (
+            <li style={{ color: "white" }}>Checking session...</li>
+          )}
 
           {user && (
             <>
@@ -57,10 +62,10 @@ function AppLayout() {
               <li>
                 <Link to="/change-password">Change Password</Link>
               </li>
+
+              {/* ✅ Profile Icon Dropdown (contains Logout) */}
               <li>
-                <button className="btn-outline" onClick={handleLogout}>
-                  Logout
-                </button>
+                <ProfileMenu user={user} onLogout={handleLogout} />
               </li>
             </>
           )}
@@ -113,7 +118,14 @@ function AppLayout() {
             </ProtectedRoute>
           }
         />
-
+        <Route 
+          path="/plans" 
+          element={
+            <ProtectedRoute>
+              <ProPlansPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/watch-history"
           element={

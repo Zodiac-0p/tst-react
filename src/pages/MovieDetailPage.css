@@ -1,0 +1,126 @@
+/* ✅ FIX: navbar overlap */
+.movie-detail-page {
+  min-height: 100vh;
+  background: #0b0c10;
+  color: #fff;
+  padding-top: 85px; /* adjust 70/90 based on navbar height */
+}
+
+.movie-detail-container {
+  max-width: 1200px;
+  padding: 20px;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-block;
+  background: #ff5722;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.back-btn:hover {
+  opacity: 0.9;
+}
+
+/* Grid */
+.movie-detail-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+}
+
+@media (min-width: 992px) {
+  .movie-detail-grid {
+    grid-template-columns: 360px 1fr;
+    align-items: start;
+  }
+}
+
+/* Left */
+.movie-info {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.no-thumb {
+  width: 100%;
+  height: 220px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.movie-title {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0 0 10px;
+}
+
+.movie-desc {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.views-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.watch-btn {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  background: #ff5722;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.watch-btn:hover {
+  opacity: 0.92;
+}
+
+/* Right */
+.movie-video {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.video-player {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 14px;
+  background: #000;
+}
+
+.movie-msg {
+  color: rgba(255, 255, 255, 0.75);
+}

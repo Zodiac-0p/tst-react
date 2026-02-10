@@ -224,9 +224,9 @@ export default function LoginPage() {
                 </small>
               </div>
 
-              <div className="text-center mt-2">
+              {/* <div className="text-center mt-2">
                 <small className="text-secondary">Backend: {API_BASE}</small>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

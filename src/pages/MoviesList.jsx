@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
-const API = "http://127.0.0.1:8000/api/movies/";
+const API_BASE = "http://localhost:8000";
+const API = `${API_BASE}/api/movies/`;
 
 function SkeletonCard() {
   return (
