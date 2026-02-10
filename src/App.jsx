@@ -10,7 +10,7 @@ import {
 import { useContext } from "react";
 
 import RegisterPage from "./pages/Register";
-import HomePage from "./pages/homePage";
+import HomePage from "./pages/homepage";
 import WatchHistory from "./pages/watch_history";
 import ChangePassword from "./pages/change_pasword";
 import Login from "./pages/login";

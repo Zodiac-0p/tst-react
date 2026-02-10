@@ -1,10 +1,7 @@
-
-function Footer() {
+export default function footer() {
   return (
-    <footer className="footer">
-      <p>&copy; 2025 OTT Platform. All Rights Reserved.</p>
+    <footer className="text-center py-4 text-secondary">
+      © {new Date().getFullYear()} Flickify
     </footer>
   );
 }
-
-export default Footer;
