@@ -1,0 +1,22 @@
+.main-content {
+  padding: 30px 50px;
+  background: #05070f;
+  min-height: 70vh;
+}
+
+.featured-title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.home-msg {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.movies-container {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}

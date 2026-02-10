@@ -1,0 +1,66 @@
+.movie-card {
+  position: relative;
+  width: 220px;              /* smaller width */
+  aspect-ratio: 16 / 9;      /* makes it landscape */
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  z-index: 5;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* crop instead of stretching */
+  display: block;
+}
+
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-title {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.movie-desc {
+  color: rgba(255,255,255,0.8);
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.watch-btn {
+  background: #0aa7e6;
+  color: white;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+}
