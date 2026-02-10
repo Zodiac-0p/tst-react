@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
-import Footer from "../components/Footer";
+import Footer from "../components/footer";
 import "./HomePage.css";
 
 const API_BASE = "http://127.0.0.1:8000"; // change if needed
