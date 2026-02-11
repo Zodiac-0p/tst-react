@@ -1,37 +1,57 @@
-const API_BASE = "http://localhost:8000";
+// src/api.js
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
+
+// Read csrftoken cookie set by Django
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+  return null;
+}
+
+// Ensure CSRF cookie exists (Django sets csrftoken on this endpoint)
+export async function ensureCsrfCookie() {
+  await fetch(`${API_BASE}/api/csrf/`, {
+    method: "GET",
+    credentials: "include",
+  }).catch(() => {});
+}
+
+async function safeJson(res) {
+  try {
+    return await res.json();
+  } catch {
+    return {};
+  }
+}
 
 export async function apiGet(path) {
   const res = await fetch(`${API_BASE}${path}`, {
     method: "GET",
     credentials: "include",
   });
-  const data = await res.json().catch(() => ({}));
+
+  const data = await safeJson(res);
   return { res, data };
 }
 
 export async function apiPost(path, body = {}) {
-  const csrfRes = await fetch(`${API_BASE}/api/csrf/`, {
-    method: "GET",
-    credentials: "include",
-  });
+  // Make sure csrftoken cookie exists before POST
+  await ensureCsrfCookie();
 
-  // read csrftoken cookie
-  const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrftoken="))
-    ?.split("=")[1];
+  const csrfToken = getCookie("csrftoken");
 
   const res = await fetch(`${API_BASE}${path}`, {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       "X-CSRFToken": csrfToken || "",
     },
-    credentials: "include",
     body: JSON.stringify(body),
   });
 
-  const data = await res.json().catch(() => ({}));
+  const data = await safeJson(res);
   return { res, data };
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function ProfileMenu({ user, onLogout }) {
   const [open, setOpen] = useState(false);

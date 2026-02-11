@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { apiGet, apiPost } from "./api";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
   // user = null (loading), false (logged out), or object (logged in)

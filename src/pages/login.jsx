@@ -5,7 +5,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { AuthContext } from "../AuthProvider";
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_BASE;
+console.log("API_BASE =", API_BASE);
+
 
 // ✅ Read csrftoken cookie set by Django
 function getCookie(name) {

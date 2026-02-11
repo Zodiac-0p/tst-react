@@ -1,196 +1,390 @@
-/* General Styles */
-body, html {
+/* =========================
+   Flickify – Professional OTT UI (No Navbar)
+   FULL UPDATED App.css
+   ========================= */
+
+/* Theme */
+:root {
+  --bg: #0f171e;
+  --bg2: #0b1116;
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.72);
+  --muted2: rgba(255, 255, 255, 0.55);
+  --accent: #f5b301; /* gold */
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* ✅ Better cinematic background */
+  background:
+    radial-gradient(circle at 20% 10%, rgba(245, 179, 1, 0.10), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(31, 128, 224, 0.10), transparent 45%),
+    radial-gradient(circle at 60% 90%, rgba(255, 255, 255, 0.05), transparent 55%),
+    var(--bg);
+
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ✅ IMPORTANT: remove old centered container */
+#root {
+  max-width: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0d0d0d;
-  color: white;
+  text-align: left;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* =========================
+   App Layout (Sidebar + Content)
+   ========================= */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  background: transparent;
+}
+
+/* Content starts after fixed sidebar */
+.main-content {
+  margin-left: 90px; /* sidebar collapsed width */
+  width: calc(100% - 90px);
+  min-height: 100vh;
+  padding: 22px 26px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* When Sidebar expands on hover */
+.sidebar:hover ~ .main-content {
+  margin-left: 220px;
+  width: calc(100% - 220px);
+}
+
+/* ✅ Page width container (fix empty/too wide look) */
+.page-wrap{
+  max-width: 100%;
+  margin: 0;
+  padding: 0 40px;   /* just side spacing */
+}
+
+
+
+/* =========================
+   Common UI blocks
+   ========================= */
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.page-subtitle {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+/* ✅ Section hierarchy (Featured / PRO headings) */
+.section {
+  margin-top: 26px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 900;
+  margin: 0 0 8px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+/* Glass header block (optional – use on pages if needed) */
+.glass-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 16px;
+  border-radius: 16px;
+
+  background: rgba(0,0,0,0.18);   /* lighter */
+  border: none;                  /* ✅ remove border */
+  backdrop-filter: blur(10px);
+}
+
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(245, 179, 1, 0.35);
+}
+
+.brand-name {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.badge-pro {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(245, 179, 1, 0.12);
+  border: 1px solid rgba(245, 179, 1, 0.35);
+  color: var(--accent);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.btn,
+button {
+  border: none;
+  cursor: pointer;
+  padding: 11px 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  color: #141414;
+  background: linear-gradient(90deg, #f5b301, #ffcf4a);
+  box-shadow: 0 14px 40px rgba(245, 179, 1, 0.18);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover,
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btn-outline {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Small icon button */
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: none;
+}
+
+/* =========================
+   Hero / Banner (Home)
+   ========================= */
+  .home-hero-pro{
+  margin-top: 14px;
+  padding: 34px 18px;
+  border-radius: 22px;
+  border: none; /* ✅ remove border */
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.06) 100%),
+    radial-gradient(circle at 18% 30%, rgba(245,179,1,0.16), transparent 45%),
+    rgba(255,255,255,0.02);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.35); /* softer */
+}
+
+
+   .hero {
+  border-radius: 22px;
+  padding: 46px 22px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.08) 100%),
+    radial-gradient(circle at 18% 30%, rgba(245, 179, 1, 0.18), transparent 45%),
+    radial-gradient(circle at 70% 10%, rgba(31, 128, 224, 0.14), transparent 45%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
   text-align: center;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 10px 30px;
-  z-index: 1000;
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 42px;
+  font-weight: 900;
 }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
+.hero h3 {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-weight: 700;
 }
 
-.navbar a:hover {
-  color: #d4af37;
+.hero p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #1a1a1a;
+/* =========================
+   Movie grid + cards
+   ========================= */
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #d4af37;
-}
-
-.nav {
-  display: flex;
-  gap: 20px;
-}
-
-.nav a {
-  color: white;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  color: #ff5733;
-}
-
-/* Footer */
-.footer {
-  padding: 20px;
-  background-color: #1a1a1a;
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* Movie Card */
 .movie-card {
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-  transition: transform 0.2s ease;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  transition: transform 0.18s ease, border-color 0.18s ease;
 }
 
 .movie-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px);
+  border-color: rgba(245, 179, 1, 0.22);
 }
 
 .movie-image {
   width: 100%;
-  border-radius: 10px;
+  height: 260px;
+  object-fit: cover;
 }
 
 .movie-title {
-  margin-top: 10px;
-  font-size: 16px;
+  padding: 12px 12px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
 }
 
-/* Movie Detail Page */
+/* =========================
+   Movie Detail Page
+   ========================= */
 .movie-detail {
-  padding-top: 80px;
-  text-align: center;
+  padding-top: 8px; /* navbar removed */
+  text-align: left;
 }
 
 .movie-detail-title {
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0 0 10px;
 }
 
 .movie-detail-description {
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 16px;
 }
 
 .watch-btn {
-  padding: 10px 20px;
-  background-color: #ff5733;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 14px;
 }
 
-.watch-btn:hover {
-  background-color: #e64a19;
-}
-
-/* Main Content */
-.main-content {
-  padding-top: 100px;
-}
-
-.movies-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Watch History */
+/* =========================
+   Watch History
+   ========================= */
 .watch-history {
-  padding-top: 100px;
+  padding-top: 10px;
 }
 
 .watch-history ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
 }
 
 .watch-history li {
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #1a1a1a;
-  border-radius: 5px;
+  padding: 14px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--muted);
 }
 
-/* Buttons */
-.btn,
-button {
-  background: #ff5733;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-top: 10px;
+/* =========================
+   REMOVE old navbar styles
+   ========================= */
+/* .navbar,
+.nav-links,
+.nav-links li,
+.navbar a,
+.header,
+.nav,
+.footer { */
+  /* intentionally blank – navbar removed */
+/* } */
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 768px) {
+  .main-content {
+  margin-left: 90px;   /* space for sidebar */
+  padding: 22px 40px;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
-.btn:hover,
-button:hover {
-  background: #e64a19;
+
+  .sidebar:hover ~ .main-content {
+  margin-left: 220px;
 }
 
-.nav-links {
-  display: flex !important;
-  gap: 16px !important;
-  align-items: center !important;
-}
+  .hero h1 {
+    font-size: 30px;
+  }
 
-.nav-links li {
-  display: inline-flex !important;
-  align-items: center !important;
-}
-
-.btn-outline {
-  display: inline-block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  border: 1px solid #fff;
-  color: #fff;
-  background: transparent;
-  padding: 6px 14px;
-  border-radius: 8px;
+  .section-title {
+    font-size: 28px;
+  }
 }
